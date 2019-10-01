@@ -90,7 +90,7 @@ export default class EditImage extends Component {
     canvas.setActiveObject(text);
   }
 
-  addShapeToCanvas({typeOfShape, color}) {
+  addShapeToCanvas(typeOfShape) {
     let shape;
     switch (typeOfShape) {
       case 'rectangle':
