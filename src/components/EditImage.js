@@ -79,13 +79,18 @@ export default class EditImage extends Component {
     }
   }
 
-  addTextToCanvas(caption) {
-    const text = new fabric.IText(caption, { left: 0, top: 0, fill: 'grey' });
+  addTextToCanvas({ caption, fontFamily, fontColor }) {
+    const text = new fabric.IText(caption, {
+      fontFamily,
+      left: Math.floor(Math.random() * 200 + 1),
+      top: Math.floor(Math.random() * 200 + 1),
+      fill: fontColor
+    });
     canvas.add(text);
     canvas.setActiveObject(text);
   }
 
-  addShapeToCanvas(typeOfShape) {
+  addShapeToCanvas({typeOfShape, color}) {
     let shape;
     switch (typeOfShape) {
       case 'rectangle':
@@ -172,7 +177,7 @@ export default class EditImage extends Component {
               </div>
 
               <div
-                classname='item2'
+                className='item2'
                 style={{
                   height: '100%',
                   marginTop: '2rem',

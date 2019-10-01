@@ -5,7 +5,9 @@
   "dependencies": {
     "@material-ui/core": "^4.4.3",
     "fabric": "^3.4.0",
+    "font-picker-react": "^3.4.0",
     "react": "^16.9.0",
+    "react-color": "^2.17.3",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.1.0",
     "react-scripts": "3.1.2",
