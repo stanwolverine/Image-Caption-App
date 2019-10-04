@@ -1,55 +1,142 @@
 .search-section {
   padding: 5rem 10rem;
   height: 60vh;
-  background-image: linear-gradient(to bottom right, #20282cde, #0b2531de),
-    url(../images/search-section-bg.jpg);
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(var(--color-darkblue), 0.92),
+      rgba(var(--color-darkblue), 0.97)
+    ),
+    url(../images/bg_1280_816.jpg);
   background-position: center;
   background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid #98d6ff;
 }
 
 .heading-primary {
-  color: rgb(235, 235, 235);
-  font-family: 'Montserrat', sans-serif;
+  color: rgb(var(--color-yellow));
   font-weight: 300;
-  font-size: 5rem;
-  text-transform: capitalize;
+  font-size: 5.5rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
   margin-bottom: 4rem;
 }
 
-.search-form {
-}
-
-.search-form > label {
-  display: none;
-}
-
 .search-input {
-  width: 60vw;
-  padding: 1rem 2rem;
-  background-color: transparent;
-  color: rgb(235, 235, 235);
-  border: 1px solid rgb(235, 235, 235);
-  border-radius: 50px;
+  width: 35vw;
+  height: 4.9rem;
+  padding: 1rem 1.5rem;
+  background-color: rgb(220, 220, 220);
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: 1.8rem;
+  border: none;
+  border-radius: 0px; /* To remove default border-radius of mozilla and any other browser, In CHROME input looks as expected without this property */
+  border-bottom: 0.4rem solid rgb(2, 185, 2);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  transition: width 0.3s ease-in-out, border-bottom 0.05s ease-in-out;
+  transform-origin: right;
+}
+
+.search-input::-webkit-input-placeholder {
+  color: rgb(133, 132, 132);
+}
+
+.search-input::placeholder {
+  color: rgb(133, 132, 132);
+}
+
+.search-input:placeholder-shown {
+  border-bottom: 0.4rem solid rgb(220, 220, 220);
 }
 
 .search-input:focus {
+  width: 50vw;
+  border-bottom: 0.4rem solid rgb(2, 185, 2);
   outline: none;
 }
 
+.search-input:focus:placeholder-shown {
+  border-bottom: 0.4rem solid orangered;
+}
+
 .search-button {
+  width: 7.695rem;
+  height: 4.9rem;
+  border: none;
+  outline: none;
+  padding: 0.8rem 1rem 1.2rem 1rem;
+  font-size: 1.8rem;
+  font-family: inherit;
+  border-radius: 0px; /* To remove default border-radius of mozilla and any other browser, In CHROME buttons looks as expected without this property */
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: rgb(233, 233, 233);
+  background-color: rgb(255, 72, 0);
+  position: relative;
+}
+
+.search-button:active {
+  outline: none;
+}
+
+.search-icon-box {
+  display: block;
+  position: absolute;
+  transform: translate(70%, -155%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.4s, opacity 0.1s, visibility 0.1s;
+}
+
+.search-icon {
+  font-size: 2.7rem;
+  color: rgb(220, 220, 220);
+}
+
+.search-text {
+  display: block;
+  transform: translateY(0);
+  transition: transform 0.4s, opacity 0.1s, visibility 0.1s;
+}
+
+/* BUTTON ANIMATION WHEN HOVER */
+
+.search-button:hover .search-icon-box {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(70%, 0);
+}
+
+.search-button:hover .search-text {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(200%);
 }
 
 .results-section {
-  min-height: 30vh;
+  position: relative;
+  text-align: center;
+  min-height: 50vh;
   padding: 6rem 3rem;
-  background-color: rgb(190, 190, 190);
+  background-color: rgb(210, 210, 210);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   align-content: space-between;
+}
+
+.results-section h2 {
+  font-size: 3.7rem;
+  font-weight: 300;
+  color: #949494;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

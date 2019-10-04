@@ -3,11 +3,16 @@
   height: 7.5rem;
   font-size: 2.2rem;
   font-weight: 300;
-  font-family: 'Montserrat', sans-serif;
-  background-color: var(--color-powder);
-  color: var(--color-warm);
+  font-family: 'Archivo', sans-serif;
+  border-bottom: 1px solid #9150e4;
+  box-shadow: 0 0 10px 0px #7724e4;
+
+  background-color: #210841;
+  color: rgb(211, 211, 211);
   display: flex;
   justify-content: space-evenly;
+  z-index: 1;
+  position: relative;
 }
 
 .header-info {
@@ -25,8 +30,8 @@
 }
 .header-info--detail:hover {
   transform: scale(1.01) rotateZ(-4deg) translateZ(0);
-  color: var(--color-powder);
-  background-color: var(--color-warm);
+  color: rgb(104, 182, 255);
+  background-color: #120324;
   backface-visibility: hidden;
   -webkit-font-smoothing: subpixel-antialiased;
 }

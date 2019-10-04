@@ -27,21 +27,30 @@ export default class SearchForm extends Component {
         <section className='search-section'>
           <h1 className='heading-primary'>Search for Images</h1>
           <form className='search-form' onSubmit={this.handleSubmit}>
-            <label htmlFor='search-input'>Search for images</label>
             <input
               id='search-input'
               className='search-input'
               type='text'
-              placeholder='type something here...'
+              placeholder='Enter keyword?'
               required
               value={searchTerm}
               onChange={this.handleChange}
             />
-            <button className='search-button'>Search</button>
+            <button className='search-button'>
+              <span className='search-icon-box'>
+                <i
+                  className='fas fa-arrow-right search-icon'
+                  aria-hidden='true'
+                />
+              </span>
+              <span className='search-text'>Search</span>
+            </button>
           </form>
         </section>
         <section className='results-section'>
-          {loading === null ? (
+          {error ? (
+            <h2>{error}</h2>
+          ) : loading === null ? (
             <h2>Your search results will appear here.</h2>
           ) : loading === true ? (
             <h2>Loading...</h2>
@@ -52,7 +61,6 @@ export default class SearchForm extends Component {
               <ImagePreview key={img.id} id={img.id} url={img.imgUrl} />
             ))
           )}
-          {error && <h2>{error}</h2>}
         </section>
       </main>
     );

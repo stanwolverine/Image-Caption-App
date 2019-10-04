@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { fabric } from 'fabric';
+import { saveAs } from 'file-saver';
 import './EditImage.css';
 import AddText from './AddText';
 import AddShape from './AddShape';
@@ -23,6 +24,7 @@ export default class EditImage extends Component {
     this.addTextToCanvas = this.addTextToCanvas.bind(this);
     this.changeAddModeToShape = this.changeAddModeToShape.bind(this);
     this.changeAddModeToText = this.changeAddModeToText.bind(this);
+    this.downloadImage = this.downloadImage.bind(this);
   }
 
   componentDidMount() {
@@ -61,13 +63,24 @@ export default class EditImage extends Component {
     e.persist();
     this.addShapeToCanvas(e.target.name);
   }
+
+  // downloadImage() {
+  //   const imgData = canvas
+  //     .toDataURL('jpeg', 1)
+  //     .replace('image/png', 'image/octet-stream');
+  //   window.location.href = imgData;
+  //   alert(
+  //     `Downloaded image doesn't have a file extension. So please rename file and add ".jpeg" as a file extension. Then there should be no problem in viewing the image after adding extension.`
+  //   );
+  // }
+
   downloadImage() {
-    const imgData = canvas
-      .toDataURL('jpeg', 1)
-      .replace('image/png', 'image/octet-stream');
-    window.location.href = imgData;
-    alert(
-      `Downloaded image doesn't have a file extension. So please rename file and add ".jpeg" as a file extension. Then there should be no problem in viewing the image after adding extension.`
+    this.c.toBlob(
+      function(blob) {
+        saveAs(blob, 'your_brand_new_amazing_image.jpeg');
+      },
+      'image/jpeg',
+      1
     );
   }
 

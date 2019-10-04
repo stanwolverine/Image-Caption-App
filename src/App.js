@@ -21,7 +21,7 @@ class App extends Component {
   getImages(searchTerm) {
     const validSearchTerm = searchTerm.replace(/ /g, '+');
     const URL = `https://pixabay.com/api/?key=${KEY}&q=${validSearchTerm}&image_type=photo&per_page=100`;
-    this.setState({ loading: true, images: [] }, () => {
+    this.setState({ loading: true, images: [], error: '' }, () => {
       fetch(URL)
         .then(res => res.json())
         .then(data => {
@@ -29,12 +29,14 @@ class App extends Component {
           // console.log(extractImpData(data.hits)[0]);
           this.setState({ images: extractImpData(data.hits), loading: false });
         })
-        .catch(error =>
+        .catch(error => {
+          console.log(error);
           this.setState({
-            error: `${error}. Please make sure you are connected to internet or try a different search.`,
+            error:
+              'Please make sure you are connected to internet or try a different search.',
             loading: false
-          })
-        );
+          });
+        });
     });
   }
 
